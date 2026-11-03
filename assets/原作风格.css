@@ -278,3 +278,7 @@ button[data-offroad-state="mixed"]{color:#f5cf72!important;background:#79602855!
 .squad-roster .squadlist{max-height:none;min-height:0;flex:0 1 auto}
 .squad-roster .squadrow{flex-shrink:0}
 .squad-roster .groups{flex:0 0 auto}
+/* D-141: inspection occupies every command slot except cancel selection. */
+.actions.inspect-actions{display:grid;grid-template-columns:repeat(var(--dock-slots),minmax(0,1fr));overflow:hidden}
+.actions.inspect-actions button{min-width:0}
+.actions.inspect-actions .inspect-wide{grid-column:1 / -2;align-items:center;text-align:center}
