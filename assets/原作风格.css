@@ -1,0 +1,280 @@
+
+/* D-084: original-asset visual layer; command simulation remains shared. */
+:root{--accent:#43f4a6;--line:#526466;--muted:#9aafb4}
+body{background:#080d10}main{padding:0;max-width:none}header{display:none}
+.game{height:100svh;max-height:none;min-height:780px;border:0;border-radius:0;background:#303744}
+.map{position:absolute;top:98px;height:calc(100% - 290px);background:#303744}
+button,.panel,.dialog,.hero,.iteminfo,.exchangeSide,.empty,.toast{border-radius:0}
+button{background:#142124ed url('原作UI/button-regular.png') center/100% 100%;border-color:#72858a}
+button:hover{background-color:#30423f;border-color:#b8d9d0}
+button.active,button.primary{background-color:#1c4537;color:#48ffad;border-color:#57eeab}
+.icon{object-fit:contain}button img.icon{width:44px;height:44px;flex:none}
+.selectors button .entry-human{width:64px;height:76px}
+.hud{position:absolute;inset:0 0 auto;height:98px;background:#05090aed;border-top:2px solid #6f8286;border-bottom:2px solid #536366;display:flex;align-items:center;z-index:2;gap:0;padding:0 48px}
+.crest{height:140px;align-self:flex-start;width:110px;display:grid;place-items:center;background:linear-gradient(100deg,#224a22,#44752b,#163b24);clip-path:polygon(0 0,100% 0,100% 80%,50% 100%,0 80%);border:2px solid #8aa176;margin-right:24px}
+.crest img{width:72px;height:88px;object-fit:contain}
+.hud-stat{display:flex;align-items:center;gap:16px;padding:0 34px;height:100%;border-right:2px solid #455054;font:40px ui-monospace,monospace;white-space:nowrap}
+.hud-stat img{width:54px;height:60px;object-fit:contain}.hud-stat small{font:22px 'Microsoft YaHei';color:#94aaa7}
+.hud-grow{flex:1}.hud button{border:0;min-height:68px;padding:8px 20px}
+.topbar{top:122px;left:auto;right:44px;background:#060c0de8;padding:6px;gap:6px}
+.topbar .sector{display:none}.topbar button{border:0;min-height:64px;padding:8px 18px}
+.calendar{padding:0 18px;font-size:30px;letter-spacing:2px;color:#dbe5e2}
+.rightside{top:222px;right:46px;width:420px;max-height:calc(100% - 464px);z-index:3}
+.multirow{background:#0c171bd9;border:2px solid #6c8585}.selectors button{background:#101d20}
+.squadrow{background:#0b171beF;border:2px solid #586d71}.sqnum{background:#182627!important}
+.group{background:#0c181ceF}.groupLabel{background:#071013c9;padding:4px 10px}
+.dock{left:40px;right:40px;bottom:28px;min-height:160px;padding:14px 20px;border:2px solid #607674;background:#0a151be8;z-index:4}
+.dockhead{margin-bottom:10px}.actions button{min-height:74px}
+.modehint{top:auto;bottom:210px;left:46px;right:500px;color:#d4e5e1}
+.panel,.panel.wide{top:216px;bottom:220px;background:#101c20f7 url('原作UI/panel-surface.png') center/100% 100%;right:494px}
+.panelhead{background:#18292c}.hero{background:#15272a url('原作UI/squad-hero.png') center/cover}
+.toast{bottom:270px;z-index:10}.statusstrip,.instruction{margin:0;padding:36px 48px}.instruction{padding-top:0}
+.objective{z-index:2;position:absolute;top:228px;left:44px;width:508px;pointer-events:none;color:#e0e9e8;text-shadow:0 4px 6px #000}
+.objective strong{display:block;font-size:38px;border-bottom:2px solid #73918a;padding:10px 16px;background:#081317c9}
+.objective p{font-size:26px;padding:8px 16px;margin:6px 0;background:linear-gradient(90deg,#081317c9,transparent)}
+.objective .square{display:inline-block;width:24px;height:24px;border:2px solid #c1d9d3;margin-right:18px}
+.layer-toggle{position:absolute;right:46px;bottom:238px;width:96px;height:96px;border-radius:50%;padding:16px;z-index:3;font-size:46px;color:#43f4a6}
+.resource-panel{position:absolute;right:170px;bottom:254px;width:460px;background:#091418f2;border:2px solid #506969;padding:22px;z-index:2}
+.resource-head{display:flex;align-items:center;justify-content:space-between;font-size:34px;color:#a3c5ca;margin-bottom:18px}
+.resource-head button{min-height:50px;padding:0 10px;border:0}
+.resource-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.resource-grid button{height:90px;min-height:0;background:#1d2b2e;border:2px solid transparent;padding:14px}
+.resource-grid img{width:58px;height:58px;object-fit:contain}
+.resource-grid button.active{border-color:#4af6a6;background:#254b3f}
+.resource-caption{font-size:20px;color:#98afae;margin-top:14px}
+
+
+
+
+
+/* D-085: full reference control inventory; added controls are display placeholders. */
+:root{--rail:96px;--rail-gap:18px;--edge:40px}
+.build-controls{position:absolute;left:var(--edge);bottom:36px;display:flex;gap:20px;z-index:4}
+.build-controls button{width:108px;height:120px;padding:12px;flex-direction:column;gap:0;background:#0d1a1ee8;border:4px solid #92a7ad}
+.build-controls img{width:76px;height:76px;object-fit:contain}.build-controls small{font:24px ui-monospace;color:#c3dce4}
+.map-tools{position:absolute;right:var(--edge);bottom:36px;display:flex;flex-direction:column;gap:var(--rail-gap);z-index:4}
+.map-tools button{width:var(--rail);height:var(--rail);min-height:0;padding:16px;border-radius:50%;border:4px solid #97aeb6;background:#0c191dec}
+.map-tools img{width:100%;height:100%;object-fit:contain}.map-tools .dim{opacity:.6}.compass img{transform:rotate(90deg)}
+.lit img,.radio-call img{filter:brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(1100%) hue-rotate(87deg)}
+.radio-call{position:absolute;bottom:38px;right:calc(var(--edge) + var(--rail) + 40px);width:380px;height:88px;min-height:0;padding:0 12px 0 28px;border-radius:52px;border:4px solid #a0b3b9;background:#14272bdc;color:#49f4a8;z-index:4;gap:30px}
+.radio-call span{flex:1;font-size:34px}.radio-call img{width:70px;height:76px;object-fit:contain;border-left:2px solid #759395;padding-left:12px}
+.resource-panel{right:calc(var(--edge) + var(--rail) + 36px);bottom:336px;width:480px;padding:22px;z-index:3}
+.resource-head{margin-bottom:20px}.resource-head>div{display:flex;gap:12px}.resource-head button{width:48px;height:48px;min-height:0;background:#41565e;font-weight:bold;padding:0;font-size:44px}
+.resource-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.resource-grid button{height:86px;min-height:0;padding:14px;background:#203035;border:0}.resource-grid img{width:100%;height:100%;object-fit:contain}
+.rightside{display:contents}.selectors{position:absolute;top:232px;right:var(--edge);width:360px;z-index:4}
+.squadlist{position:absolute;left:50%;transform:translateX(-50%);bottom:328px;width:420px;max-height:436px;z-index:4}
+.groups{position:absolute;left:50%;transform:translateX(-50%);bottom:220px;width:420px;z-index:4}
+.dock{left:572px;right:652px;bottom:28px;min-height:160px}
+.dockhead{gap:16px}.dockhead b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dockhead .sub{white-space:nowrap}
+.modehint{left:580px;right:660px;bottom:204px}.toast{left:580px;max-width:calc(100% - 1240px)}
+.panel,.panel.wide{left:572px;right:652px;top:216px;bottom:220px;width:auto}
+.civic-controls{display:flex;align-self:flex-start;height:152px;gap:8px;margin-right:10px}
+.civic-controls button{width:96px;min-height:0;height:152px;flex-direction:column;padding:6px;border:2px solid #72898e;background:#101e22}
+.civic-controls span{font:36px ui-monospace}.civic-controls img{height:60px;width:60px;object-fit:contain}
+.weather-stat{display:flex;flex-direction:column;align-self:flex-start;background:#112025;height:152px;padding:6px 12px;border:2px solid #72898e;font:38px ui-monospace}.weather-stat img{width:68px;height:70px;object-fit:contain}
+.shelter-status{display:flex;align-items:center;gap:10px;margin:0 24px}.shelter-status>img{width:44px;height:56px;object-fit:contain}.shelter-status>span{width:148px;height:24px;background:repeating-linear-gradient(90deg,#344549 0 22px,#071013 22px 28px)}.shelter-status i{display:block;width:28px;height:100%;background:#40ed9d}
+.hud-stat{padding:0 20px}.hud-alerts{position:absolute;top:102px;left:51%;display:flex;gap:10px;z-index:3}
+.hud-alerts button{min-height:0;width:54px;height:70px;border:0;padding:8px;clip-path:polygon(0 0,100% 0,100% 100%,50% 80%,0 100%)}.hud-alerts img{width:100%;height:100%;object-fit:contain;filter:brightness(0)}
+.hud-alerts .alert-food{background:#ee182a}.hud-alerts .alert-notice{background:#ffd900}
+.topbar .daynight{width:84px;height:84px;min-height:0;padding:14px;border:2px solid #97aeb6;border-radius:50%;background:linear-gradient(#243754,#8a9ba0)}.daynight img{width:100%;height:100%;object-fit:contain}.topbar .time-help{width:44px;padding:0}.time-help img{width:40px;height:40px;object-fit:contain}
+
+
+
+.hud .menu-placeholder{width:80px;height:72px;flex:none;padding:12px}.hud .menu-placeholder img{width:48px;height:48px;object-fit:contain}
+
+/* D-086: 3200 x 1440 fixed design canvas. Smaller windows only scale the preview. */
+.screen-shell{position:relative;width:100%;height:min(45vw,calc(100svh - 160px));overflow:hidden;background:#05090c}
+.game,.game:fullscreen{position:absolute;left:50%;top:50%;width:3200px;height:1440px;min-height:1440px;max-height:none;flex:none;transform:translate(-50%,-50%) scale(var(--preview-scale,1));transform-origin:center center}
+main{width:100%;max-width:none;padding:0}.map{height:calc(100% - 290px);top:98px}
+.instruction,.statusstrip{max-width:3200px;margin-inline:auto}.instruction{font-size:26px}
+.screen-shell:fullscreen{width:100vw;height:100vh}
+
+.groups{height:128px;grid-template-rows:28px 90px;gap:10px}.groupLabel{font-size:20px;line-height:24px}.group{height:90px}.squadlist{bottom:360px}
+
+/* D-087: only location, layers, grid, north and radio remain at lower right. */
+.compass img{transform:none}.radio-call{right:188px;width:400px;height:100px;bottom:36px;border-radius:54px;padding:0 0 0 26px;gap:10px}.radio-call span{font-size:28px}.radio-call img{width:100px;height:100px;padding:18px;border:3px solid #91a7ae;border-radius:50%;background:#102024;object-fit:contain}
+
+
+/* D-089: proportions follow the reference at a 3200 x 1440 design size. */
+:root{--rail:120px;--rail-gap:20px;--edge:40px}
+.build-controls{gap:16px;bottom:36px}.build-controls button{width:120px;height:128px;padding:12px}.build-controls img{width:84px;height:84px}.build-controls small{font-size:26px}
+.map-tools button{padding:22px}
+.radio-call{right:200px;width:400px;height:100px;bottom:36px}.radio-call span{font-size:28px}.radio-call img{background:transparent;width:100px;height:100px}
+.selectors{width:340px;top:250px}.selectors button{width:120px;min-height:160px}.selectors button .entry-human{width:66px;height:84px}.entry-count{font-size:30px}
+.multirow{font-size:28px;min-height:88px;padding:12px 16px}.multirow label{min-height:60px}input[type=checkbox]{width:36px;height:36px}
+.dock{left:640px;right:660px;bottom:28px;min-height:160px;padding:16px 20px}
+.actions{display:flex;gap:12px;overflow:auto}.actions button{min-height:80px;font-size:26px;padding:12px 18px}.actions button .icon{width:36px;height:36px}
+.squadlist{width:440px;bottom:384px;max-height:300px}.squadrow{min-height:144px}.groups{width:440px;bottom:220px;height:140px;grid-template-rows:28px 100px;gap:12px}.group{height:100px}
+.modehint{left:640px;right:660px;bottom:200px;font-size:24px}.game:has(.squadlist:not([hidden])) .modehint{left:40px;right:auto;width:540px;bottom:210px}
+.toast{left:640px;bottom:230px;max-width:1800px}
+.map{top:98px;height:calc(100% - 290px)}
+
+/* D-090: selection-only command dock; 1.5x unit/vehicle/entry icons. */
+.dock{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(calc(100% + 40px));transition:transform 240ms ease-out,opacity 180ms ease-out,visibility 0s linear 240ms}
+.dock.is-visible{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);transition:transform 240ms ease-out,opacity 180ms ease-out,visibility 0s}
+.selectors button .entry-human{width:99px;height:126px}
+.selectors button{width:140px;min-height:200px}
+@media(prefers-reduced-motion:reduce){.dock,.dock.is-visible{transition:none}}
+
+/* D-091: map extends behind the bottom controls without a reserved background strip. */
+.map{top:0;height:100%;width:100%}
+
+/* D-092: reference-style command strip, original tooltip surface plus native CSS geometry. */
+.dock{min-height:160px;height:auto;padding:24px 48px;border:0;border-radius:88px;background:transparent;isolation:isolate;box-shadow:none}
+.dock::before{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;background:#06090b url('原作UI/tooltip-surface.png') center/100% 100%;filter:brightness(.36);opacity:.85}
+.dockhead{display:none}
+.actions{display:flex;gap:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.actions button{flex:1 0 0;min-width:190px;min-height:112px;padding:4px 18px;display:flex;flex-direction:column;justify-content:center;gap:10px;background:none;border:0;border-right:2px solid #71868a;border-radius:0;box-shadow:none;color:#e0e7e5;font-size:28px;line-height:1.3;white-space:nowrap}
+.actions button:last-child{border-right:0}
+.actions button .icon{width:48px;height:48px}
+.actions button:hover{background:#b6d9ca12;color:#fff}
+.actions button.active{background:#32f2a51c;color:#48f9b4;border-color:#71868a}
+.actions button:focus-visible{outline:3px solid #54e9ae;outline-offset:-4px}
+
+/* Operation reference is document content outside the scaled game canvas. */
+.statusstrip,.instruction{box-sizing:border-box;width:100%;max-width:1200px;margin-inline:auto;padding:20px 24px;font-size:15px;line-height:1.65}
+.statusstrip{display:flex;flex-wrap:wrap;gap:8px 24px;padding-bottom:16px;font-size:13px}
+.instruction{padding-top:0;padding-bottom:36px}
+.instruction h2{margin:0 0 10px;font-size:21px;line-height:1.4}
+.instruction .note{margin:0 0 16px;font-size:13px;line-height:1.7}
+.instruction .tablewrap{border-width:1px;border-radius:8px}
+.instruction table{width:100%;min-width:640px;table-layout:fixed;font-size:14px;line-height:1.65}
+.instruction th,.instruction td{padding:12px 16px;border-bottom-width:1px;overflow-wrap:break-word}
+.instruction thead th{font-size:13px;font-weight:600}
+.instruction th:first-child{width:160px}
+.instruction th:last-child{width:96px}
+.instruction tbody th{font-weight:500}
+.instruction .badge{display:inline-block;font-size:12px;line-height:1.6;border-width:1px;padding:1px 7px;border-radius:4px}
+@media(max-width:700px){.statusstrip,.instruction{padding-left:16px;padding-right:16px}.instruction th,.instruction td{padding:10px 12px}.instruction th:first-child{width:120px}.instruction th:last-child{width:80px}}
+
+/* D-101: larger roster beside the squad entry; multi-select lives in the command dock. */
+.selectors{width:140px}
+.squad-roster{position:absolute;top:250px;right:210px;width:580px;display:flex;flex-direction:column;gap:20px;z-index:4}
+.squad-roster .squadlist,.squad-roster .groups{position:relative;inset:auto;transform:none;width:100%;flex-shrink:0}
+.squad-roster .squadlist{max-height:560px;gap:10px}
+.squad-roster .squadrow{min-height:176px;padding:14px 16px;gap:16px}
+.squad-roster .sqnum{width:72px}
+.squad-roster .sqnum b{font-size:40px}.squad-roster .sqnum small{font-size:26px}
+.squad-roster .rowheading b{font-size:28px}.squad-roster .rowheading .reserve{font-size:24px}
+.squad-roster .vital-label,.squad-roster .vital-label strong{font-size:26px}
+.squad-roster .rowtext{gap:6px}
+.squad-roster .groups{height:156px;grid-template-rows:32px 112px;gap:12px}
+.squad-roster .groupLabel{font-size:24px;line-height:28px}.squad-roster .group{height:112px}
+
+/* D-102: explicit control group management and dynamically created shortcuts. */
+.squad-roster .groups{display:flex;flex-direction:column;height:auto;gap:12px}
+.group-manage-button{width:100%;min-height:88px;font-size:30px}
+.group-shortcuts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-height:240px;overflow:auto}
+.group-shortcuts:empty{display:none}
+.group-manager-toolbar{display:flex;justify-content:flex-end;margin-bottom:24px}
+.managed-group{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:24px;border-bottom:2px solid #526466}
+.managed-group>div:first-child{flex:1;min-width:0}.managed-group b{font-size:34px}.managed-group p{font-size:28px;color:#b6cbd2;margin:12px 0;overflow-wrap:anywhere}
+.group-manager button{font-size:30px;min-height:88px;padding:16px 28px}
+.group-picks{display:flex;flex-direction:column;gap:14px}.group-picks label{display:flex;align-items:center;gap:20px;min-height:90px;padding:14px 20px;border:2px solid #526466;background:#142124}.group-picks small{margin-left:auto;color:#b6cbd2}
+#group-error{color:#ffbd83;font-size:26px;min-height:40px}
+
+/* D-103: persistent shortcuts below the squad entry, above map tools. */
+#group-shortcuts{position:absolute;top:470px;right:var(--edge);width:140px;max-height:380px;display:flex;flex-direction:column;gap:14px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;z-index:4;touch-action:pan-y}
+#group-shortcuts:empty{display:none}
+#group-shortcuts .group{height:112px;min-height:112px;flex-shrink:0;touch-action:pan-y}
+
+/* Touch scroll stays inside the group rail; buttons retain tap selection. */
+#group-shortcuts{overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+
+.member{touch-action:none}.drag-preview{position:fixed;z-index:9999;pointer-events:none;background:#183c30ef;color:#91ffd0;border:1px solid #58cf9c;padding:8px 12px;font:14px sans-serif;border-radius:4px}
+
+/* D-110: reference squad/vehicle cards, sized to fit the fixed canvas. */
+.panel.reference-detail{left:auto;right:40px;top:170px;bottom:auto;width:800px;max-height:1240px;overflow:visible;background:#0b1718;border:3px solid #66808a;box-shadow:0 14px 50px #0008}
+.reference-detail .panelhead{height:64px;min-height:64px;padding:8px 12px;gap:8px;background:#13272c;position:relative;border:0}
+.reference-detail .panelhead h2{flex:1;margin:0;font-size:30px}.reference-detail .panelhead button{width:48px;height:48px;min-height:48px;padding:4px}.reference-detail .panelhead .icon{width:36px;height:36px}
+.reference-detail .panelbody{padding:0;position:relative}
+.reference-hero{height:300px;background-position:center;background-size:cover;position:relative}.with-vehicle .reference-hero{height:250px}
+.detail-type{position:absolute;left:14px;top:14px;width:72px;height:72px;padding:10px;background:#071719db;border:2px solid #91acb3;color:#39e99b}.detail-type .icon{width:100%;height:100%}
+.reference-status{display:flex;align-items:center;gap:10px;height:50px;padding:6px 18px;background:#081215;color:#e9c627;font-size:28px;font-weight:600}.reference-status .icon{width:32px;height:32px}
+.reference-detail .sectionlabel{margin:0;height:42px;padding:4px 14px;font-size:25px;letter-spacing:0;align-items:center}.reference-detail .sectionlabel>span:last-child{color:#dee5e6;font-weight:600}
+.detail-crew,.detail-cargo{border-top:3px solid #58717c;padding:0 12px 12px}
+.crew-layout{display:flex;gap:10px}.crew-layout .members{flex:1;min-width:0}
+.members{gap:8px}.member{display:flex;flex-direction:column;align-items:stretch;padding:0;gap:0;min-width:0;border:0;background:#182b2d;overflow:hidden}
+.member-photo{display:block;position:relative;height:154px;overflow:hidden}.member-photo>img{width:100%;height:100%;object-fit:cover}.member-name{position:absolute;left:0;bottom:0;right:0;padding:2px 4px;background:#061215a6;font-size:19px;color:#dae5e7;text-align:center}
+.member-health{display:block;height:5px;background:#253b3d}.member-health i{display:block;height:100%;background:#37d991}
+.equipment-row{display:flex;gap:3px;padding-top:4px}.equipment-slot{position:relative;display:grid;place-items:center;flex:1;min-width:0;height:58px;background:#20373a;overflow:hidden}
+.ammo-fill{position:absolute;bottom:0;left:0;right:0;height:var(--ammo-fill);background:var(--ammo-color);opacity:.78;pointer-events:none}.equipment-slot .icon{position:relative;width:46px;height:46px;object-fit:contain;z-index:1}.secondary-slot{background:#204135}.secondary-slot .icon{opacity:.65}
+#unbind-slot{width:94px;background:#24393e;display:flex;align-items:center}#unbind-slot button{width:100%;height:100%;padding:16px;border:0}#unbind-slot .icon{width:60px;height:70px}
+.reference-detail .inventory{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;min-height:90px}.reference-detail .item{height:90px;min-height:90px;padding:8px;position:relative;background:linear-gradient(135deg,#273b3e,#142326);border:0}.reference-detail .item .icon{width:60px;height:60px}.reference-detail .item>span:not(.icon):not(.lock){display:none}.reference-detail .item>small{position:absolute;right:5px;bottom:1px;font-size:20px;line-height:1;color:#d2ebe2;text-shadow:0 1px 3px #000}.reference-detail .item .lock{font-size:16px}.reference-detail .empty{height:90px;min-height:90px}
+.vehicle-condition{padding:8px 16px 14px;border-top:8px solid #617c88}.condition-line{display:flex;align-items:center;justify-content:space-between;font-size:25px;height:36px;color:#a3bbc4}.condition-line small{font-size:18px;color:#8da7af}.condition-line b{color:#e3e7e6;font-size:25px}.condition-track{height:12px;background:#243439;margin-bottom:6px}.condition-track i{display:block;height:100%;background:linear-gradient(#249a64,#5cffb4,#258c64)}.condition-track.fuel i{background:linear-gradient(#687b84,#c4d9dc,#687b84)}
+.reference-actions{display:flex;align-items:center;gap:10px;padding:12px 16px;border-top:3px solid #617c88}.reference-actions button{width:78px;height:72px;min-height:72px;padding:10px;background:#253b40;border:0}.reference-actions .icon{width:48px;height:48px}.reference-location{display:flex;align-items:center;gap:12px;height:64px;padding:6px 16px;font-size:26px;color:#c8c7b4}.reference-location .icon{width:44px;height:44px}
+.reference-detail .iteminfo{position:absolute;bottom:0;left:10px;right:10px;z-index:3;margin:0;background:#14292bf5;padding:16px}.reference-detail .iteminfo p{margin:8px 0}.reference-detail .iteminfo .row{margin:8px 0}.reference-detail .iteminfo button{min-height:60px;padding:8px 12px;font-size:24px}.no-crew{height:110px;display:grid;place-items:center;flex:1;color:#8ea5ad;font-size:26px}
+
+.reference-detail.with-vehicle .reference-hero{height:230px}
+
+.reference-detail .empty-slot{height:90px;background:linear-gradient(135deg,#203438,#111d20);display:block}
+
+/* D-111: paired reference cards share one drag exchange surface. */
+.panel.exchange-reference{left:50%;right:auto;top:180px;bottom:auto;transform:translateX(-50%);width:1900px;max-height:1200px;background:transparent;border:0;box-shadow:none;overflow:visible}
+.exchange-reference>.panelhead{height:58px;background:#102024e8;padding:6px 14px}.exchange-reference>.panelhead h2{font-size:28px;margin:0}.exchange-reference>.panelhead button{width:48px;height:46px;min-height:46px;padding:5px}
+.exchange-reference>.panelbody{padding:0;position:relative}.exchange-reference .exchangegrid{display:grid;grid-template-columns:850px 200px 850px;gap:0;align-items:start}
+.exchange-reference .exchangeSide{padding:0;border:3px solid #617c88;background:#0b1718;display:flex;flex-direction:column;min-height:1030px;overflow:visible}
+.exchange-title{height:60px;display:flex;align-items:center;gap:14px;padding:8px 16px;font-size:30px;background:#16292e}.exchange-title .icon{width:48px;height:48px}.exchange-title b{flex:1}
+.exchange-reference .reference-hero{height:300px;flex:none}.exchange-reference .members{grid-template-columns:repeat(4,minmax(0,1fr))}.exchange-reference .member-photo{height:164px}
+.exchange-reference .exchange-spacer{flex:1;min-height:70px}.exchange-reference .reference-location{border-top:3px solid #617c88;margin-top:0}
+.exchange-bridge{align-self:center;justify-self:center;width:140px;height:140px;display:grid;place-items:center;background:#102c23dc;box-shadow:0 0 50px #37ed9566;color:#40f1a0}.exchange-bridge .icon{width:100px;height:100px}
+.empty-members{display:grid;gap:8px}.empty-member{background:#23363c;height:231px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#7c969e}.empty-member>.icon{width:118px;height:154px;opacity:.6}.empty-member>span{display:flex;width:100%;gap:8px;justify-content:center;background:#18292e}.empty-member>span .icon{width:60px;height:58px;opacity:.45}
+.exchange-reference .iteminfo{position:absolute;bottom:0;left:210px;right:210px;z-index:5;background:#14292bf5}.exchange-reference .reference-detail .inventory{min-height:90px}
+
+/* D-112: equipment slots support independent drag sources and empty states. */
+[data-equip-slot]{touch-action:none;cursor:grab}.vacant-equipment{color:#799098;font-size:28px}.reference-detail .inventory{grid-template-columns:repeat(7,minmax(0,1fr))}
+
+.reference-detail .inventory{grid-template-columns:repeat(8,minmax(0,1fr))}.reference-detail .item .icon{max-width:100%}
+
+/* Drag feedback is the item icon or member portrait, not a text label. */
+.drag-preview{padding:0;border:0;border-radius:0;background:transparent;display:grid;place-items:center;filter:drop-shadow(0 2px 4px #000b)}.drag-preview>.icon,.drag-preview>img,.drag-preview>svg{width:100%;height:100%;object-fit:contain;pointer-events:none}
+
+/* Item information is visible only while the pointer is held. */
+.item-hold-detail{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:30;width:880px;padding:32px;background:#13282bf5;border:2px solid #79979e;box-shadow:0 20px 80px #0009;pointer-events:none}.item-hold-detail h2{font-size:32px;margin:0 0 18px}.item-hold-detail p{margin:14px 0;font-size:28px}.item-hold-detail .sub{font-size:24px}
+
+/* Drag icon center matches the pointer and the drop hit-test coordinates. */
+.drag-preview{transform:translate(-50%,-50%)}
+
+/* Grenade drag-to-cancel target, in the 3200 × 1440 design canvas. */
+.grenade-cancel{position:absolute;z-index:60;left:50%;bottom:48px;transform:translateX(-50%);width:560px;height:180px;box-sizing:border-box;border:3px dashed #b58888;border-radius:90px;background:#241d22dc;color:#e8caca;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;pointer-events:none;font-size:32px;}
+.grenade-cancel[hidden]{display:none}.grenade-cancel strong{font-size:38px}.grenade-cancel.is-over{border-style:solid;border-color:#ff8989;background:#813a40ed;color:#fff}.game.grenade-aiming #dock{visibility:hidden;pointer-events:none}
+
+/* All mode hints stay centered above the action strip, including with roster open. */
+.game #hint{left:640px;right:660px;width:auto;top:auto;bottom:208px;font-size:32px;line-height:1.55;text-align:center;pointer-events:none;}
+
+/* PC / mobile operation comparison. */
+.instruction table{table-layout:fixed;min-width:800px}.instruction thead th:nth-child(1){width:18%}.instruction thead th:nth-child(2){width:37%}.instruction thead th:nth-child(3){width:45%}
+
+/* Original detail stance switches and resource lock. */
+.reference-actions button{flex:1 1 0;min-width:0;max-width:78px}.reference-actions button[aria-pressed="true"],.cargo-lock[aria-pressed="true"]{color:#42f5a8;background:#194a36;border-color:#42f5a8}.reference-actions button[aria-pressed="false"]{color:#819ba5}.cargo-count{display:flex;align-items:center;gap:10px}.detail-cargo .cargo-lock{min-height:44px;width:44px;height:44px;padding:4px;border-radius:0}.cargo-lock .icon{width:30px;height:30px}
+
+/* Web page: fit the canvas without vertical letterboxing and expose instructions. */
+.statusstrip{padding-top:10px;padding-bottom:10px}
+.instruction{margin-top:0}
+
+/* D-128: color only mobile operation text; source columns retain their style. */
+.instruction .operation-color-note{margin:0 0 14px;font-size:13px;line-height:1.8;color:#b7c7ce}
+.instruction .mobile-removed{color:#ff8585}.instruction .mobile-direct{color:#6ee7ad}.instruction .mobile-changed{color:#f5cf72}
+
+/* D-131: fixed left hold modifier and persistent right multi-select. */
+#hold-append{position:absolute;left:260px;top:auto;bottom:300px;width:220px;height:180px;z-index:4;touch-action:none;user-select:none;-webkit-user-select:none;flex-direction:column;gap:8px;border:3px solid #789a92;border-radius:28px;background:#102420ed;color:#d7e9e2;font-size:30px}
+#hold-append strong{font-size:32px}#hold-append.active{background:#205b42;border-color:#48f9b4;color:#8dffd0;box-shadow:0 0 24px #48f9b444}
+#hold-append:disabled{opacity:.4}
+.selectors{width:140px;flex-direction:column;gap:18px;top:250px}
+
+#group-shortcuts{top:628px;max-height:300px}
+.dock{left:900px;right:900px;padding-inline:32px}
+.append-hint{position:absolute;left:640px;right:640px;bottom:208px;z-index:4;text-align:center;color:#8dffd0;font-size:32px;pointer-events:none;text-shadow:0 2px 6px #000}
+
+/* D-132: compact native checkbox below the squad entry. */
+.multi-toggle{order:1;width:140px;min-height:90px;padding:10px 0;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:26px;color:#d7e9e2;cursor:pointer;touch-action:manipulation;background:#102420d9}
+.multi-toggle>span{display:flex;align-items:center;gap:10px}.multi-toggle input{appearance:auto;width:38px;height:38px;margin:0;accent-color:#48f9b4;cursor:pointer}.multi-toggle small{font-size:22px;white-space:nowrap}.multi-toggle:has(input:checked){color:#8dffd0}
+#group-shortcuts{top:578px;max-height:350px}
+
+/* D-135: mixed state remains distinguishable without changing the button label. */
+button[data-offroad-state="mixed"]{color:#f5cf72!important;background:#79602855!important;box-shadow:inset 0 -5px #f5cf72!important}
+
+/* D-138: grow the roster above the radio button; keep its management footer visible. */
+.squad-roster{max-height:calc(100% - 410px)}
+.squad-roster .squadlist{max-height:none;min-height:0;flex:0 1 auto}
+.squad-roster .squadrow{flex-shrink:0}
+.squad-roster .groups{flex:0 0 auto}
